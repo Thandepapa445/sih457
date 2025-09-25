@@ -4,12 +4,19 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 import { storage } from "./storage";
 import { insertFaultReportSchema, updateFaultReportStatusSchema, updateFaultReportSchema } from "@shared/schema";
 import { z } from "zod";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Configure multer for file uploads
-const uploadDir = path.join(process.cwd(), "uploads");
+const uploadDir = process.env.NODE_ENV === 'production' 
+  ? '/tmp/uploads' 
+  : path.join(process.cwd(), "uploads");
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -374,7 +381,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
       }
       
-      res.sendFile(filePath);
+      // Use createReadStream for better memory management in serverless
+      const stream = fs.createReadStream(filePath);
+      stream.pipe(res);
     } catch (error) {
       console.error("Error serving file:", error);
       res.status(500).json({ error: "Internal server error" });

@@ -37,7 +37,8 @@ export default function AnalyticsDashboard({ onBack }: AnalyticsDashboardProps) 
 
   const { data: trendData, isLoading: trendLoading } = useQuery({
     queryKey: ["/api/analytics/trends", trendPeriod],
-    queryFn: () => apiClient.getTrendData(trendPeriod)
+    queryFn: () => apiClient.getTrendData(trendPeriod),
+    enabled: !!trendPeriod
   });
 
   const isLoading = analyticsLoading || statusLoading || priorityLoading || departmentLoading || trendLoading;

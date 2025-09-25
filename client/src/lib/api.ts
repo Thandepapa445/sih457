@@ -70,7 +70,9 @@ export interface FileInfo {
   isDocument: boolean;
 }
 class ApiClient {
-  private baseUrl = '/api';
+  private baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://your-vercel-app.vercel.app/api' 
+    : '/api';
 
   async fetchFaultReports(filters?: FaultReportFilters): Promise<PaginatedResult<FaultReport>> {
     const params = new URLSearchParams();

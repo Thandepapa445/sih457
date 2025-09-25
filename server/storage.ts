@@ -162,8 +162,11 @@ export class MemStorage implements IStorage {
       }
     ];
 
-    for (const report of sampleReports) {
-      await this.createFaultReport(report);
+    // Only initialize sample data in development
+    if (process.env.NODE_ENV !== 'production') {
+      for (const report of sampleReports) {
+        await this.createFaultReport(report);
+      }
     }
   }
 

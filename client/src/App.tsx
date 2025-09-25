@@ -193,6 +193,7 @@ function AppContent() {
               </div>
             </div>
             <ThemeToggle />
+            <div className="flex gap-2">
               <Button
                 variant="outline"
                 onClick={() => setCurrentView({ type: 'analytics' })}
@@ -201,6 +202,7 @@ function AppContent() {
                 <BarChart3 className="h-4 w-4 mr-2" />
                 Analytics
               </Button>
+            </div>
           </div>
         </div>
       </header>

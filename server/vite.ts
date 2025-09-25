@@ -5,7 +5,11 @@ import { fileURLToPath } from "url";
 import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
-import { nanoid } from "nanoid";
+
+// Simple ID generator to replace nanoid
+function generateId() {
+  return Math.random().toString(36).substring(2, 15);
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const viteLogger = createLogger();
@@ -58,7 +62,7 @@ export async function setupVite(app: Express, server: Server) {
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.tsx?v=${generateId()}"`,
       );
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
