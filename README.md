@@ -21,26 +21,40 @@ A comprehensive fault reporting and maintenance management system.
 
 ## Deployment
 
-### Vercel Deployment
+### Vercel Deployment (SIMPLIFIED)
 
-1. **Connect to Vercel:**
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click "New Project"
-   - Import your GitHub repository (`https://github.com/Thandepapa445/sih457`)
+1. **Go to [Vercel Dashboard](https://vercel.com/dashboard)**
 
-2. **Configuration:**
-   - Vercel should auto-detect the project as a Vite app
-   - The `vercel.json` file contains the necessary configuration
-   - Build command: `npm run build:vercel`
-   - Output directory: `dist`
+2. **Click "New Project"**
 
-3. **Environment Variables:**
-   - Add any required environment variables in Vercel dashboard
-   - Database will be created automatically on first run
+3. **Import this repository:**
+   ```
+   https://github.com/Thandepapa445/sih457
+   ```
 
-4. **Deploy:**
-   - Click "Deploy" and wait for the build to complete
-   - Your app will be available at the provided Vercel URL
+4. **Vercel will auto-detect it as a Vite project**
+   - Framework: Vite (auto-detected)
+   - Build command: `npm run build` (auto-detected)
+   - Output directory: `dist` (auto-detected)
+   - Install command: `npm install` (auto-detected)
+
+5. **Click "Deploy"**
+   - No additional configuration needed!
+   - The build has been tested locally and works
+   - Simple API endpoint available at `/api/hello`
+
+**That's it!** Your app will be live in ~2 minutes.
+
+### Current Status
+
+✅ **Ready for Deployment!**
+- Build tested locally and works perfectly
+- All Replit-specific code removed
+- Simplified configuration for maximum compatibility
+- Frontend will deploy as a static site
+- API endpoints available as serverless functions
+
+⚠️ **Note:** The deployed version uses mock data for demonstration. The full database functionality is available when running locally with `npm run dev`.
 
 ### Local Development
 
