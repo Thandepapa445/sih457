@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, TrendingUp, Users, AlertTriangle, CheckCircle, Clock, XCircle } from "lucide-react";
+import { ArrowLeft, TrendingUp, Users, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Clock, Circle as XCircle } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { useState } from "react";
 
